@@ -22,6 +22,15 @@ public class MailService {
 			helper.setSubject("hello");
 			helper.setFrom("pawan.k@contus.in");
 			helper.setText("whatsaap");
+			if (file!=null) {
+				helper.addAttachment(file.getOriginalFilename(), new InputStreamSource() {
+					
+					@Override
+					public InputStream getInputStream() throws IOException {
+						return file.getInputStream();
+					}
+				});
+			}
 			javaMailSender.send(message);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
