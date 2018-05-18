@@ -10,9 +10,9 @@ public class MailController {
 	@Autowired
 	private MailService mailService;
 	
-	@GetMapping("/mail")
-	public Response<String> sendMail(){
+	@PostMapping("/mail")
+	public Response<String> sendMail(@RequetParam("file") MultipartFile file){
 		
-		return mailService.sendMail();
+		return mailService.sendMail(file);
 	}
 }
